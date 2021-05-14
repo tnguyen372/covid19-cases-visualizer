@@ -11,7 +11,7 @@ import SwiftUI
 struct Covid_Cases_VisualizerApp: App {
     var body: some Scene {
         WindowGroup {
-            CountriesView()
+            DashboardView()
         }
     }
 }
