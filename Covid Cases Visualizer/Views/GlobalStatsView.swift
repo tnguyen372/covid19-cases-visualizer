@@ -31,14 +31,16 @@ struct GlobalStatsView: View {
                 Group {
                     VStack {
                         Text("\(globalStats.TotalConfirmed)")
-                            .font(.title3)
+                            .font(.title2)
+                            .foregroundColor(Color.orange)
                         Text("Confirmed")
                             .font(.subheadline)
                             .foregroundColor(Color.init(.secondaryLabel))
                     }
                     VStack {
                         Text("\(globalStats.TotalRecovered)")
-                            .font(.title3)
+                            .font(.title2)
+                            .foregroundColor(Color.green)
                         Text("Recovered")
                             .font(.subheadline)
                             .foregroundColor(Color.init(.secondaryLabel))

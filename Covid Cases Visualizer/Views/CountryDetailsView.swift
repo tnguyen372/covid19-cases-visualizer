@@ -24,28 +24,31 @@ struct CountryDetailsView: View {
             VStack {
                 switch apiService.state {
                 case .isLoading:
-                    Text("Loading...")
+                    Text("Fetching Data...")
                 case .hasData(let stats):
                     HStack(alignment: .lastTextBaseline) {
                         Group {
                             VStack {
-                                Text("\(stats.last?.Active ?? -1)")
-                                    .font(.title3)
-                                Text("Active")
-                                    .font(.subheadline)
-                                    .foregroundColor(Color.init(.secondaryLabel))
-                            }
-                            VStack {
                                 Text("\(stats.last?.Confirmed ?? -1)")
-                                    .font(.largeTitle)
+                                    .font(.title2)
                                     .foregroundColor(Color.orange)
                                 Text("Confirmed")
                                     .font(.subheadline)
                                     .foregroundColor(Color.init(.secondaryLabel))
                             }
                             VStack {
+                                Text("\(stats.last?.Active ?? -1)")
+                                    .font(.largeTitle)
+                                    .foregroundColor(Color.red)
+                                Text("Active")
+                                    .font(.subheadline)
+                                    .foregroundColor(Color.init(.secondaryLabel))
+                            }
+                            
+                            VStack {
                                 Text("\(stats.last?.Recovered ?? -1)")
-                                    .font(.title3)
+                                    .font(.title2)
+                                    .foregroundColor(Color.green)
                                 Text("Recovered")
                                     .font(.subheadline)
                                     .foregroundColor(Color.init(.secondaryLabel))
@@ -62,10 +65,13 @@ struct CountryDetailsView: View {
                         RoundedRectangle(cornerRadius: 10)
                             .fill(Color.init(.secondarySystemBackground))
                     )
+                
                     VStack {
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Confirmed }), title: "Av. Confirmed", form: ChartForm.extraLarge, dropShadow: false)
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Active }), title: "Av. Active", form: ChartForm.extraLarge, dropShadow: false)
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Recovered }), title: "Av. Recovered", form: ChartForm.extraLarge, dropShadow: false)
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Confirmed }), title: "Confirmed Average", legend: "Confirmed", form: ChartForm.extraLarge, dropShadow: false)
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Active }), title:
+                            "Active Average", legend: "Active", form: ChartForm.extraLarge, dropShadow: false)
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Recovered }), title: "Recovered Average", legend: "Recovered", form: ChartForm.extraLarge, dropShadow: false)
+                        
                     }
                 }
             }

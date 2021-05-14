@@ -18,7 +18,7 @@ struct DashboardView: View {
             VStack {
                 switch apiService.state {
                 case .isLoading:
-                    Text("Loading...")
+                    Text("Fetching Data...")
                 case .hasData(let summary):
                     ScrollView {
                         HStack {
@@ -28,7 +28,7 @@ struct DashboardView: View {
                             }, label: {
                                 Image(systemName: "flag.circle")
                                     .resizable()
-                                    .frame(width: 20, height: 20)
+                                    .frame(width: 40, height: 40)
                             })
                         }
                         .sheet(isPresented: $showCountrySelectionScreen, content: {
