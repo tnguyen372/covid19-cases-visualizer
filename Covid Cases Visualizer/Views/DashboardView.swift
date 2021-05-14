@@ -64,7 +64,7 @@ struct DashboardView: View {
             apiService.getSummary()
         }
         .onChange(of: selectedCountry, perform: { value in
-            UserDefaults.standard.setValue(value, forKey: UserDefaultKeys.selectedCountry)
+            UserDefaults.standard.setValue(value, forKey: DefaultKeys.selectedCountry)
             self.showCountrySelectionScreen = false
         })
     }

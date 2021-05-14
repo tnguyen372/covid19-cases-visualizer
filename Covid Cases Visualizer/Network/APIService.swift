@@ -50,7 +50,7 @@ class APIService<T: Decodable>: ObservableObject {
     }
     
     private func completed(with completion: Subscribers.Completion<Error>) {
-        
+        print(completion)
     }
     
     private func perform(request: URLRequest) -> AnyPublisher<T, Error> {
