@@ -66,13 +66,35 @@ struct CountryDetailsView: View {
                                 .fill(Color.init(.secondarySystemBackground))
                         )
                     }
-                
+                    // Bar Graphs
                     VStack {
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Confirmed }), title: "Confirmed Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: false)
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Active }), title:
-                            "Active Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: false)
-                        LineChartView(data: rollingAverage(for: stats.map { $0.Recovered }), title: "Recovered Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: false)
+                        BarChartView(data: ChartData(values: [("Confirmed",(stats.last?.Confirmed ?? -1)), ("Active",(stats.last?.Active ?? -1)), ("Recovered",(stats.last?.Recovered ?? -1))]), title: "Country Cases Since Day 1", style: Styles.barChartStyleNeonBlueLight, form: ChartForm.extraLarge)
+                    }
+                    .padding(.top, 20)
+                    .padding(.bottom, 10)
+                    // Line Graphs
+                    VStack {
+                        Group {
+                        MultiLineChartView(
+                            data: [
+                                (rollingAverage(for: stats.map { $0.Confirmed }), GradientColors.orange),
+                                (rollingAverage(for: stats.map { $0.Active }), GradientColors.orngPink),
+                                (rollingAverage(for: stats.map { $0.Recovered }), GradientColors.green)
+                            ], title: "Category Averages", form: ChartForm.extraLarge
+                            )
+                        .padding(.top, 10)
+                        .padding(.bottom, 10)
                         
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Confirmed }), title: "Confirmed Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: true)
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Active }), title:
+                            "Active Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: true)
+                            .padding(.top, 10)
+                            .padding(.bottom, 10)
+                        LineChartView(data: rollingAverage(for: stats.map { $0.Recovered }), title: "Recovered Average", legend: "% Change", form: ChartForm.extraLarge, dropShadow: true)
+                            .padding(.top, 10)
+                        }
                     }
                 }
             }
@@ -97,7 +119,7 @@ struct CountryDetailsView: View {
 
     struct CountryDetailsView_Previews: PreviewProvider {
         static var previews: some View {
-            CountryDetailsView(slug: "australia")
+            CountryDetailsView(slug: "United States")
                 .preferredColorScheme(.dark)
                 .previewLayout(.device)
         }
