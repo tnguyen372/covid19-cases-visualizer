@@ -27,7 +27,7 @@ struct DashboardView: View {
                                 showCountrySelectionScreen.toggle()
                             }, label: {
                                 Text("Select a Country")
-                                Image(systemName: "flag.circle")
+                                Image(systemName: "globe")
                                     .resizable()
                                     .frame(width: 40, height: 40)
                             })
