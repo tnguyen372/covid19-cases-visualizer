@@ -4,12 +4,13 @@
 
 
 ## Features
-- Dashboard that provides an overview of current COVID-19 cases in different countries
-- Bar graph for easy visual comparison of COVID-19 cases in each country 
-- Average number of COVID-19 cases per country
+- Dashboard that provides an summary overview of confirmed, active, and recovered COVID-19 cases worldwide
+- Country selector button that displays the respective country's confirmed, active, and recovered cases 
+- Line graphs depicting averages for confirmed, active, and recovered cases in selected country for a visual comparison
 
 ## Technologies Used
 - Swift for frontend
+- SwiftUI Charts provided by https://github.com/AppPear/ChartView 
 
 ## Members
 Thomas Nguyen
