@@ -1,5 +1,5 @@
 # COVID-19 Cases Visualizer
-- Base code created by Beau Nouvelle on 9/13/20. Modified for my own use. 
+- Base code created by Beau Nouvelle's SwiftUI Covid 19 SwiftUI App Tutorial on 9/13/20. Modified for my own use. 
 - Utilizes the COVID-19 API built by Kyle Redelinghuys (https://covid19api.com/)
 
 
