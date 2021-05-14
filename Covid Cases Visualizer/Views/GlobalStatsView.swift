@@ -15,12 +15,22 @@ struct GlobalStatsView: View {
     var body: some View {
         VStack(spacing: 10) {
             VStack {
+                Text("Worldwide COVID-19 Cases")
+                    .foregroundColor(Color.black)
+                    .font(.title)
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.init(.secondarySystemBackground))
+                    )
+            }
+            VStack {
                 Text("\(globalStats.TotalConfirmed - globalStats.TotalRecovered)")
                     .font(.largeTitle)
                     .foregroundColor(Color.red)
                 Text("Active")
                     .font(.subheadline)
-                    .foregroundColor(Color.init(.secondaryLabel))
+                    .foregroundColor(Color.black)
             }
             .padding()
             .background(
@@ -35,7 +45,7 @@ struct GlobalStatsView: View {
                             .foregroundColor(Color.orange)
                         Text("Confirmed")
                             .font(.subheadline)
-                            .foregroundColor(Color.init(.secondaryLabel))
+                            .foregroundColor(Color.black)
                     }
                     VStack {
                         Text("\(globalStats.TotalRecovered)")
@@ -43,7 +53,7 @@ struct GlobalStatsView: View {
                             .foregroundColor(Color.green)
                         Text("Recovered")
                             .font(.subheadline)
-                            .foregroundColor(Color.init(.secondaryLabel))
+                            .foregroundColor(Color.black)
                     }
                 }
                 .padding()
